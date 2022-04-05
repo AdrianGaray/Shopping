@@ -349,3 +349,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /Shopping/Shopping/appsettings.json
+/Notas de .NET 6.docx
+/Tuto-Shopping.url
