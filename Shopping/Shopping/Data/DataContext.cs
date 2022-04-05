@@ -10,6 +10,8 @@ namespace Shopping.Data
         }
 
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
 
         // OnModelCreating, se ejecuta antes de crear la BD.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -19,6 +21,7 @@ namespace Shopping.Data
             // la c, es de configuracion.
             // le estamos diciendo que cree un indice unico sobre el campo name.
             modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique();
+            modelBuilder.Entity<Category>().HasIndex(c => c.Name).IsUnique();
         }
     }
 }
