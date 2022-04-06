@@ -17,6 +17,10 @@ builder.Services.AddDbContext<DataContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// sea grega el servicio AddRazorPages, es un cambio para los developers
+// nos permite modificcar la vista sin parar el proyecto
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
