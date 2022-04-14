@@ -14,5 +14,7 @@ namespace Shopping.Data.Entities
         // 1 Ciudad pertenece a 1 Estado
         public State State { get; set; }
 
+        public ICollection<User> Users { get; set; }
+
     }
 }
