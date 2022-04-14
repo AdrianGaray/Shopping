@@ -44,6 +44,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Singleton: la inyecta una vez y no lo destruye, lo deja en memoria
 builder.Services.AddTransient<SeedDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
+builder.Services.AddScoped<ICombosHelper, CombosHelper>();
+
 
 // sea grega el servicio AddRazorPages, es un cambio para los developers
 // nos permite modificcar la vista sin parar el proyecto
