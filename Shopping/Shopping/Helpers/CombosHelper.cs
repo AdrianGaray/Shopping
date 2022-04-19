@@ -38,6 +38,7 @@ namespace Shopping.Helpers
             list.Insert(0, new SelectListItem { Text = "[Seleccione un país...", Value = "0" });
             return list;
         }
+
         public async Task<IEnumerable<SelectListItem>> GetComboStatesAsync(int countryId)
         {
             List<SelectListItem> list = await _context.States

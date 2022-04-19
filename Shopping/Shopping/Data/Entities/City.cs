@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Shopping.Data.Entities
 {
@@ -11,6 +12,7 @@ namespace Shopping.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Name { get; set; }
 
+        [JsonIgnore]
         // 1 Ciudad pertenece a 1 Estado
         public State State { get; set; }
 
