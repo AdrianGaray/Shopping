@@ -24,6 +24,8 @@ builder.Services.AddDbContext<DataContext>(o =>
 //TODO: Make strongest password
 builder.Services.AddIdentity<User, IdentityRole>(cfg =>
 {
+    cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+    cfg.SignIn.RequireConfirmedEmail = true;
     cfg.User.RequireUniqueEmail = true; // email unico
     cfg.Password.RequireDigit = false; // condiciones del password
     cfg.Password.RequiredUniqueChars = 0;
@@ -31,10 +33,13 @@ builder.Services.AddIdentity<User, IdentityRole>(cfg =>
     cfg.Password.RequireNonAlphanumeric = false;
     cfg.Password.RequireUppercase = false;
     // bloqueo de usuarios por intento falllidos
-    cfg.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(30);
+    //cfg.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(30);
+    cfg.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
     cfg.Lockout.MaxFailedAccessAttempts = 3; // cantidad de intentos
     cfg.Lockout.AllowedForNewUsers = true;
-}).AddEntityFrameworkStores<DataContext>();
+})
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<DataContext>();
 
 // Problema de Login a la accion NotAuthorized
 builder.Services.ConfigureApplicationCookie(options =>
@@ -50,6 +55,7 @@ builder.Services.AddTransient<SeedDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<ICombosHelper, CombosHelper>();
 builder.Services.AddScoped<IBlobHelper, BlobHelper>();
+builder.Services.AddScoped<IMailHelper, MailHelper>();
 
 
 // sea grega el servicio AddRazorPages, es un cambio para los developers

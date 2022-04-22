@@ -13,6 +13,10 @@ namespace Shopping.Helpers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
 
+        public UserHelper()
+        {
+        }
+
         public UserHelper(DataContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager)
         {
             _context = context;
@@ -79,8 +83,8 @@ namespace Shopping.Helpers
         {
             return await _context.Users
            .Include(u => u.City)
-           //.ThenInclude(c => c.State)
-           //.ThenInclude(s => s.Country)
+           .ThenInclude(c => c.State)
+           .ThenInclude(s => s.Country)
            .FirstOrDefaultAsync(u => u.Email == email);
         }
 
@@ -112,6 +116,26 @@ namespace Shopping.Helpers
         public async Task<IdentityResult> UpdateUserAsync(User user)
         {
             return await _userManager.UpdateAsync(user);
+        }
+        
+        public async Task<IdentityResult> ConfirmEmailAsync(User user, string token)
+        {
+            return await _userManager.ConfirmEmailAsync(user, token);
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(User user)
+        {
+            return await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        }
+
+        public async Task<string> GeneratePasswordResetTokenAsync(User user)
+        {
+            return await _userManager.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string password)
+        {
+            return await _userManager.ResetPasswordAsync(user, token, password);
         }
     }
 }
