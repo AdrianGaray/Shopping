@@ -104,9 +104,7 @@ namespace Shopping.Controllers
             //model.Categories = await _combosHelper.GetComboCategoriesAsync();
             return View(model);
         }
-
-                
-        /*
+               
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -190,7 +188,7 @@ namespace Shopping.Controllers
 
             return View(product);
         }
-
+        
         public async Task<IActionResult> AddImage(int? id)
         {
             if (id == null)
@@ -261,7 +259,7 @@ namespace Shopping.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Details), new { Id = productImage.Product.Id });
         }
-
+                
         public async Task<IActionResult> AddCategory(int? id)
         {
             if (id == null)
@@ -351,7 +349,7 @@ namespace Shopping.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Details), new { Id = productCategory.Product.Id });
         }
-
+        
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -390,6 +388,5 @@ namespace Shopping.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-    }*/
-}
+    }
 }
