@@ -18,7 +18,6 @@ namespace Shopping.Data
         public DbSet<ProductCategory> ProductCategories { get; set; }        
         public DbSet<ProductImage> ProductImages { get; set; }
 
-
         // OnModelCreating, se ejecuta antes de crear la BD.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
