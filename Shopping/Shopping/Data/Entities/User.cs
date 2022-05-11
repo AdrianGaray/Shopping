@@ -47,5 +47,6 @@ namespace Shopping.Data.Entities
         [Display(Name = "Usuario")]
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}"; // propiedad de lectura
 
+        public ICollection<Sale> Sales { get; set; }
     }
 }

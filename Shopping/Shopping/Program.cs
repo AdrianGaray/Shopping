@@ -55,7 +55,7 @@ builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<ICombosHelper, CombosHelper>();
 builder.Services.AddScoped<IBlobHelper, BlobHelper>();
 builder.Services.AddScoped<IMailHelper, MailHelper>();
-
+builder.Services.AddScoped<IOrdersHelper, OrdersHelper>();
 
 // sea grega el servicio AddRazorPages, es un cambio para los developers
 // nos permite modificcar la vista sin parar el proyecto
