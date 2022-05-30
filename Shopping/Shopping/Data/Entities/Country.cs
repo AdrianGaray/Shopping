@@ -17,6 +17,11 @@ namespace Shopping.Data.Entities
         // Propiedad de lectura, 
         // Que va a devolver la cantidad de Provincia que tiene un pais.
         [Display(Name = "Departamentos/Estados")]
-        public int StateNumber => States == null ? 0 : States.Count;
+        public int StatesNumber => States == null ? 0 : States.Count;
+
+        // Propiedad de lectura, 
+        [Display(Name = "Ciudades")]
+        public int CitiesNumber => States == null ? 0 : States.Sum(s => s.CitiesNumber);
+
     }
 }
